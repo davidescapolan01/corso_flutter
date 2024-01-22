@@ -307,7 +307,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //#endregion
 
     //#region 16 ListView
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(widget.title),
@@ -421,7 +421,85 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+    );*/
+    //#endregion
+
+    //#region 17 GridView
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),
+
+      body:
+      /*GridView.count(
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        crossAxisCount: 3,
+        children: [
+          for(var i in lista)
+            Container(
+              color: Colors.grey,
+              alignment: Alignment.center,
+              child: Text('$i'),
+            ),
+        ],
+      ),*/
+
+      GridView.builder(
+        padding: const EdgeInsets.all(8),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+        ),
+        itemCount: lista.length,
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.grey,
+            alignment: Alignment.center,
+            child: Text('$index'),
+          );
+        }
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
     );
     //#endregion
+
+
+
+
+
+
+    //#region
+    /*return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),
+
+      body: null,
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );*/
+    //#endregion
+
   }
 }

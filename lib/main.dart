@@ -425,7 +425,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //#endregion
 
     //#region 17 GridView
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
@@ -472,10 +472,107 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),
       ),
-    );
+    );*/
     //#endregion
 
+    //#region 18 ListTile_&_GridTile
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),
 
+      body:
+      /*ListView(
+        padding: EdgeInsets.all(8),
+        children: [
+          for (var i in lista)
+            Container(
+              height: 100,
+              margin: EdgeInsets.only(bottom: 8),
+              color: Colors.grey,
+              child: Row(
+                children: [
+                  Image.network('https://i.pravatar.cc/150?img=2'),
+                  Column(
+                    children: [
+                      Text('Luca Rossi'),
+                      Text('Ciao sono nuovo su questa applicazione'),
+                    ],
+                  ),
+                ],
+              ),
+            )
+        ],
+      ),*/
+
+      /*ListView(
+        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+        children: [
+          for (var i in lista)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: ListTile(
+                tileColor: Colors.grey,
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=2'),
+                  radius: 30,
+                ),
+                title: Text('Luca Rossi'),
+                subtitle: Text(
+                  'Ciao sono nuovo su questa applicazione',
+                  maxLines: 2,
+                ),
+                trailing: IconButton(
+                  onPressed: () => {},
+                  icon: Icon(Icons.delete),
+                ),
+                isThreeLine: true,
+              ),
+            ),
+        ],
+      ),*/
+
+      GridView.count(
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 4,
+        childAspectRatio: 0.6,
+        crossAxisCount: 2,
+        children: [
+          for(var i in lista)
+            GridTile(
+              header: GridTileBar(
+                backgroundColor: Colors.indigoAccent,
+                leading: Icon(Icons.add),
+                title: Text('Post $i'),
+                subtitle: Text('Sottotitolo bla bla bla'),
+                trailing: Icon(Icons.delete),
+              ),
+              footer: GridTileBar(
+                backgroundColor: Colors.indigoAccent,
+                leading: Icon(Icons.thumb_up_outlined),
+                subtitle: Text('22/01/2024'),
+                trailing: Icon(Icons.add_comment_outlined),
+              ),
+              child: Image.network(
+                'https://i.pravatar.cc/150?img=2',
+                fit: BoxFit.cover,
+              ),
+            ),
+        ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );
+    //#endregion
 
 
 

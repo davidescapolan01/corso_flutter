@@ -623,7 +623,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //#endregion
 
     //#region 20 Opacity_Transform_&_DecoratedBox
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
@@ -696,9 +696,82 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),
       ),
-    );
+    );*/
     //#endregion
 
+    //#region 21 Slivers
+    return Scaffold(
+      /*appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),*/
+
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar( // da guardare SliverPersistentHeader
+            floating: true,
+            pinned: true,
+            snap: true,
+            stretch: true,
+            expandedHeight: 100,
+            backgroundColor: Colors.cyan,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('Sliver App Bar'),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar viverra nisl, et venenatis odio tincidunt id. Morbi volutpat fermentum tellus, eget ornare nibh gravida vitae. Morbi consequat gravida turpis non fermentum. Quisque euismod lorem quis est faucibus, in tincidunt velit tempus. Nulla efficitur risus eget libero consectetur fermentum. Duis ac nulla nibh. Phasellus in felis non velit eleifend sollicitudin. Suspendisse ac lobortis nibh, quis efficitur mauris. Proin mollis consequat hendrerit. Quisque maximus porttitor lacus, a varius purus aliquet quis. Curabitur tristique auctor nunc, nec accumsan massa cursus ut. Nullam euismod lectus lacus. Nu'),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 50,
+              (context, index) {
+                return ListTile(
+                  leading: const CircleAvatar(
+                    backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=2'),
+                  ),
+                  title: Text('ciaoi $index'),
+                  subtitle: const Text('data test subtitle test data'),
+                  trailing: const Icon(Icons.favorite),
+                );
+              }
+            ),
+          ),
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 30,
+              (context, index) {
+                return GridTile(
+                  header: GridTileBar(
+                    backgroundColor: Colors.blueGrey,
+                    title: Text('test grid $index'),
+                    trailing: const Icon(Icons.connecting_airports_sharp),
+                  ),
+                  
+                  child: const Image(image: AssetImage('images/argo.png'))
+                );
+              }
+            ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+            ),
+          ),
+        ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );
+    //#endregion
 
     //#region
     /*return Scaffold(

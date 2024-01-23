@@ -575,7 +575,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //#endregion
 
     //#region 19 Card
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
@@ -615,6 +615,83 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );*/
+    //#endregion
+
+    //#region 20 Opacity_Transform_&_DecoratedBox
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),
+
+      body:
+      /*Opacity(
+        opacity: 0.6,
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      /*Transform.rotate(
+        angle: 45,
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      /*Transform.scale(
+        scaleY: 1.5,
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      /*Transform.translate(
+        offset: Offset(10, 10),
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      /*ClipOval(
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      /*ClipRRect(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight:  Radius.circular(20)),
+        child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
+      ),*/
+      DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.cyan,
+          //image: DecorationImage(image: AssetImage('images/argo.png')),
+          shape: BoxShape.circle,
+          gradient: LinearGradient(colors: [
+            Colors.greenAccent,
+            Colors.cyan
+          ]),
+          backgroundBlendMode: BlendMode.difference
+        ),
+        child: Container(
+          height: 300,
+        )
+      ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),

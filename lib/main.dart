@@ -476,7 +476,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //#endregion
 
     //#region 18 ListTile_&_GridTile
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.blue,
@@ -511,7 +511,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),*/
 
-      /*ListView(
+      /*ListView( //rubrica
         padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
         children: [
           for (var i in lista)
@@ -538,7 +538,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),*/
 
-      GridView.count(
+      GridView.count( //post x
         mainAxisSpacing: 4,
         crossAxisSpacing: 4,
         childAspectRatio: 0.6,
@@ -571,10 +571,56 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),
       ),
-    );
+    );*/
     //#endregion
 
+    //#region 19 Card
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
+        ],
+      ),
 
+      body: SizedBox(
+        height: 470,
+        child: Card(
+          margin: const EdgeInsets.all(10),
+          //color: Colors.orange,
+          color: Colors.white,
+          surfaceTintColor: Colors.transparent, //per togliere quel filtro violetto
+          //shadowColor: Colors.purpleAccent,
+          elevation: 20,
+          //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          clipBehavior: Clip.hardEdge,
+          child: Column(
+            children: [
+              Image.asset(
+                "images/argo.png",
+              ),
+              const ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage("https://i.pravatar.cc/150?img=2")
+                ),
+                title: Text('Luca Rossi'),
+                subtitle: Text('ciao sono nuovo'),
+                trailing: Icon(Icons.favorite),
+              )
+            ],
+          ),
+        ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        child: const Icon(Icons.add),
+      ),
+    );
+    //#endregion
 
 
     //#region

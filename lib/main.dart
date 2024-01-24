@@ -1,9 +1,13 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(MyApp2());
 }
 
+
+//#region fino a 21 Slivers
 class MyApp extends StatelessWidget {
   const MyApp({super.key}); //ctor
 
@@ -715,9 +719,9 @@ class _MyHomePageState extends State<MyHomePage> {
         slivers: [
           const SliverAppBar( // da guardare SliverPersistentHeader
             floating: true,
-            pinned: true,
+            //pinned: true,
             snap: true,
-            stretch: true,
+            //stretch: true, // da abbinare a strechMode su FlexibleSpaceBar
             expandedHeight: 100,
             backgroundColor: Colors.cyan,
             flexibleSpace: FlexibleSpaceBar(
@@ -772,27 +776,95 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
     //#endregion
-
-    //#region
-    /*return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: Colors.blue,
-        actions: [
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.access_time)),
-        ],
-      ),
-
-      body: null,
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        child: const Icon(Icons.add),
-      ),
-    );*/
-    //#endregion
-
   }
 }
+//#endregion
+
+//#region 22-23 Stateless_&_Statefull_Widget-Esercizio_Statefull_Widget
+class MyApp2 extends StatefulWidget {
+  MyApp2({super.key});
+
+  @override
+  State<MyApp2> createState() => _MyApp2State();
+}
+//card con img
+//double tap
+//icona cuore da bordo bianco a cuore pieno rosso
+class _MyApp2State extends State<MyApp2> {
+  //int _counter = 0;
+  bool liked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo App'),
+        ),
+        //#region 22 Stateless_&_Statefull_Widget
+        /*body: Center(
+          child: Text('$_counter', style: TextStyle(fontSize: 45, fontWeight: FontWeight.w700),),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _counter++;
+            });
+            print(_counter);
+          },
+          child: const Icon(Icons.add),
+        ),*/
+        //#endregion
+
+        //#region 23 Esercizio_Statefull_Widget
+        body: Container(
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.center,
+
+            child: SizedBox(
+              height: 400,
+              // child: GestureDetector(
+              child: GestureDetector(
+                onDoubleTap: () {
+                  setState(() {
+                    liked = !liked;
+                  });
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  elevation: 20,
+                  surfaceTintColor: Colors.transparent,
+                  clipBehavior: Clip.hardEdge,
+                  child: Stack(
+                    children: [
+                      Image(
+                        image: AssetImage('images/argo.png'),
+                        fit: BoxFit.fitHeight,
+                      ),
+                      Positioned(
+                        child: Icon(
+                          liked? Icons.favorite : Icons.favorite_border,
+                          color: liked? Colors.red : Colors.grey,
+                          size: 40,
+                        ),
+                        top: 10,
+                        right: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+        )
+        //#endregion
+      ),
+    );
+  }
+}
+//#endregion

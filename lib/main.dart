@@ -2,6 +2,7 @@ import 'widgets/CardTesto.dart';
 import 'widgets/CardVideo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   // runApp(const MyApp());
@@ -896,7 +897,7 @@ class _MyApp3State extends State<MyApp3> {
         ),
         body:
         //#region 24 Dividere_App_in_Widget
-        ListView.builder(
+        /*ListView.builder(
           padding: EdgeInsets.all(10),
           itemCount: 10,
           itemBuilder: (context, index) {
@@ -905,7 +906,21 @@ class _MyApp3State extends State<MyApp3> {
             else
               return CardTesto(value: lista[index]);
           }
-        ),
+        ),*/
+        //#endregion
+
+
+
+        //#region 25 Pacchetti_&_Librerie
+        Center(
+          child: Text(
+            'GoogleFonts',
+            style: GoogleFonts.agdasima(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        )
         //#endregion
       ),
     );

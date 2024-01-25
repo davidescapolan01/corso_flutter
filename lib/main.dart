@@ -1,9 +1,12 @@
+import 'widgets/CardTesto.dart';
+import 'widgets/CardVideo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   // runApp(const MyApp());
-  runApp(MyApp2());
+  // runApp(MyApp2());
+  runApp(MyApp3());
 }
 
 
@@ -868,3 +871,49 @@ class _MyApp2State extends State<MyApp2> {
   }
 }
 //#endregion
+
+
+class MyApp3 extends StatefulWidget {
+  const MyApp3({super.key});
+
+  @override
+  State<MyApp3> createState() => _MyApp3State();
+}
+
+class _MyApp3State extends State<MyApp3> {
+  final lista = [3, 6, 54, 2, 3, 5, 8, 95, 2, 1];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo App'),
+        ),
+        body:
+        //#region 24 Dividere_App_in_Widget
+        ListView.builder(
+          padding: EdgeInsets.all(10),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            if(lista[index] % 2 == 0)
+              return CardVideo(value : lista[index]);
+            else
+              return CardTesto(value: lista[index]);
+          }
+        ),
+        //#endregion
+      ),
+    );
+  }
+}
+
+
+
+
+
+

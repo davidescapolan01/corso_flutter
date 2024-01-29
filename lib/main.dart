@@ -10,35 +10,40 @@ void main() {
   runApp(MyApp3());
 }
 
-
 //#region fino a 21 Slivers
 class MyApp extends StatelessWidget {
   const MyApp({super.key}); //ctor
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) { //I method (build -> costruisce widget)
-    return MaterialApp( //accesso ad ambiente google
+  Widget build(BuildContext context) {
+    //I method (build -> costruisce widget)
+    return MaterialApp(
+      //accesso ad ambiente google
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'), //schermata iniziale dell'app (fornisce titolo)
+      home: const MyHomePage(
+          title:
+              'Flutter Demo Home Page'), //schermata iniziale dell'app (fornisce titolo)
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title}); //pagina iniaiale app (richiede titolo)
+  const MyHomePage(
+      {super.key, required this.title}); //pagina iniaiale app (richiede titolo)
   final String title; //variabile titolo richiesta
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState(); //classe dello stato del widget
+  State<MyHomePage> createState() =>
+      _MyHomePageState(); //classe dello stato del widget
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  List<int> lista = [1,2,3,4,5,6,7,8,9,10];
+  List<int> lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   void _incrementCounter() {
     setState(() {
@@ -699,7 +704,7 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 300,
         )
       ),
-      
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),
@@ -721,7 +726,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar( // da guardare SliverPersistentHeader
+          const SliverAppBar(
+            // da guardare SliverPersistentHeader
             floating: true,
             //pinned: true,
             snap: true,
@@ -733,38 +739,34 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SliverToBoxAdapter(
-            child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar viverra nisl, et venenatis odio tincidunt id. Morbi volutpat fermentum tellus, eget ornare nibh gravida vitae. Morbi consequat gravida turpis non fermentum. Quisque euismod lorem quis est faucibus, in tincidunt velit tempus. Nulla efficitur risus eget libero consectetur fermentum. Duis ac nulla nibh. Phasellus in felis non velit eleifend sollicitudin. Suspendisse ac lobortis nibh, quis efficitur mauris. Proin mollis consequat hendrerit. Quisque maximus porttitor lacus, a varius purus aliquet quis. Curabitur tristique auctor nunc, nec accumsan massa cursus ut. Nullam euismod lectus lacus. Nu'),
+            child: Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar viverra nisl, et venenatis odio tincidunt id. Morbi volutpat fermentum tellus, eget ornare nibh gravida vitae. Morbi consequat gravida turpis non fermentum. Quisque euismod lorem quis est faucibus, in tincidunt velit tempus. Nulla efficitur risus eget libero consectetur fermentum. Duis ac nulla nibh. Phasellus in felis non velit eleifend sollicitudin. Suspendisse ac lobortis nibh, quis efficitur mauris. Proin mollis consequat hendrerit. Quisque maximus porttitor lacus, a varius purus aliquet quis. Curabitur tristique auctor nunc, nec accumsan massa cursus ut. Nullam euismod lectus lacus. Nu'),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 50,
-              (context, index) {
-                return ListTile(
-                  leading: const CircleAvatar(
-                    backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=2'),
-                  ),
-                  title: Text('ciaoi $index'),
-                  subtitle: const Text('data test subtitle test data'),
-                  trailing: const Icon(Icons.favorite),
-                );
-              }
-            ),
+            delegate:
+                SliverChildBuilderDelegate(childCount: 50, (context, index) {
+              return ListTile(
+                leading: const CircleAvatar(
+                  backgroundImage:
+                      NetworkImage('https://i.pravatar.cc/150?img=2'),
+                ),
+                title: Text('ciaoi $index'),
+                subtitle: const Text('data test subtitle test data'),
+                trailing: const Icon(Icons.favorite),
+              );
+            }),
           ),
           SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 30,
-              (context, index) {
-                return GridTile(
+            delegate:
+                SliverChildBuilderDelegate(childCount: 30, (context, index) {
+              return GridTile(
                   header: GridTileBar(
                     backgroundColor: Colors.blueGrey,
                     title: Text('test grid $index'),
                     trailing: const Icon(Icons.connecting_airports_sharp),
                   ),
-                  
-                  child: const Image(image: AssetImage('images/argo.png'))
-                );
-              }
-            ),
+                  child: const Image(image: AssetImage('images/argo.png')));
+            }),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 8,
@@ -773,7 +775,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         child: const Icon(Icons.add),
@@ -791,6 +792,7 @@ class MyApp2 extends StatefulWidget {
   @override
   State<MyApp2> createState() => _MyApp2State();
 }
+
 //card con img
 //double tap
 //icona cuore da bordo bianco a cuore pieno rosso
@@ -806,11 +808,11 @@ class _MyApp2State extends State<MyApp2> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo App'),
-        ),
-        //#region 22 Stateless_&_Statefull_Widget
-        /*body: Center(
+          appBar: AppBar(
+            title: const Text('Flutter Demo App'),
+          ),
+          //#region 22 Stateless_&_Statefull_Widget
+          /*body: Center(
           child: Text('$_counter', style: TextStyle(fontSize: 45, fontWeight: FontWeight.w700),),
         ),
         floatingActionButton: FloatingActionButton(
@@ -822,13 +824,12 @@ class _MyApp2State extends State<MyApp2> {
           },
           child: const Icon(Icons.add),
         ),*/
-        //#endregion
+          //#endregion
 
-        //#region 23 Esercizio_Statefull_Widget
-        body: Container(
+          //#region 23 Esercizio_Statefull_Widget
+          body: Container(
             padding: EdgeInsets.all(10),
             alignment: Alignment.center,
-
             child: SizedBox(
               height: 400,
               // child: GestureDetector(
@@ -853,8 +854,8 @@ class _MyApp2State extends State<MyApp2> {
                       ),
                       Positioned(
                         child: Icon(
-                          liked? Icons.favorite : Icons.favorite_border,
-                          color: liked? Colors.red : Colors.grey,
+                          liked ? Icons.favorite : Icons.favorite_border,
+                          color: liked ? Colors.red : Colors.grey,
                           size: 40,
                         ),
                         top: 10,
@@ -865,14 +866,13 @@ class _MyApp2State extends State<MyApp2> {
                 ),
               ),
             ),
-        )
-        //#endregion
-      ),
+          )
+          //#endregion
+          ),
     );
   }
 }
 //#endregion
-
 
 class MyApp3 extends StatefulWidget {
   const MyApp3({super.key});
@@ -888,12 +888,14 @@ class _MyApp3State extends State<MyApp3> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      //#region fino a 25 Pacchetti_&_Librerie
+      /*theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter Demo App'),
+          backgroundColor: Colors.blue,
         ),
         body:
         //#region 24 Dividere_App_in_Widget
@@ -909,8 +911,6 @@ class _MyApp3State extends State<MyApp3> {
         ),*/
         //#endregion
 
-
-
         //#region 25 Pacchetti_&_Librerie
         Center(
           child: Text(
@@ -922,13 +922,75 @@ class _MyApp3State extends State<MyApp3> {
           ),
         )
         //#endregion
+      ),*/
+      //#endregion
+
+      //#region 26 Theme_&_ThemeData
+      theme: ThemeData(
+        /*colorScheme: const ColorScheme .fromSwatch(
+            primarySwatch: Colors.blue,
+            accentColor: Colors.teal,
+            cardColor: Colors.indigo,
+            backgroundColor: Colors.cyan
+          ),*/
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Color.fromARGB(255, 226, 125, 96),
+          onPrimary: Color.fromARGB(255, 128, 73, 57),
+          secondary: Color.fromARGB(255, 133, 220, 176),
+          onSecondary: Color.fromARGB(255, 72, 119, 98),
+          error: Color.fromARGB(255, 65, 179, 163),
+          onError: Color.fromARGB(255, 28, 87, 78),
+          background: Color.fromARGB(255, 232, 168, 124),
+          onBackground: Color.fromARGB(255, 96, 69, 56),
+          surface: Color.fromARGB(255, 195, 141, 158),
+          onSurface: Color.fromARGB(255, 86, 63, 72),
+        ),
+        /*textTheme: TextTheme(
+              bodyMedium: TextStyle(
+                  fontFamily: GoogleFonts.abel().fontFamily,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 45)),*/
+        textTheme: GoogleFonts.abelTextTheme(),
+        /*appBarTheme: AppBarTheme(
+            backgroundColor: Colors.greenAccent
+          ),
+          scaffoldBackgroundColor: Colors.purpleAccent,*/
       ),
+      //darkTheme: ThemeData(),
+      /*home: Theme(
+          data: ThemeData(/*bla bla bla*/),
+          child: */
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo App'),
+        ),
+        body: Center(
+          child: Text('GoogleFonts',
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary)),
+        ),
+        floatingActionButton:
+            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+      ),
+      //)
+      //#endregion
+
+      //#region 27 +_Schermate
+      /*theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo App'),
+          backgroundColor: Colors.blue,
+        ),
+        body: Center(
+          child: Text('GoogleFonts'),
+        ),
+        floatingActionButton: FloatingActionButton(onPressed: () { },
+        ),
+      )*/
+      //#endregion
     );
   }
 }
-
-
-
-
-
-

@@ -1,3 +1,6 @@
+import 'RouteGenerator.dart';
+import 'Screens/PrimaPagina.dart';
+import 'Screens/SecondaPagina.dart';
 import 'widgets/CardTesto.dart';
 import 'widgets/CardVideo.dart';
 import 'package:flutter/gestures.dart';
@@ -926,7 +929,7 @@ class _MyApp3State extends State<MyApp3> {
       //#endregion
 
       //#region 26 Theme_&_ThemeData
-      theme: ThemeData(
+      /*theme: ThemeData(
         /*colorScheme: const ColorScheme .fromSwatch(
             primarySwatch: Colors.blue,
             accentColor: Colors.teal,
@@ -972,24 +975,19 @@ class _MyApp3State extends State<MyApp3> {
         floatingActionButton:
             FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
       ),
-      //)
+      //)*/
       //#endregion
 
       //#region 27 +_Schermate
-      /*theme: ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo App'),
-          backgroundColor: Colors.blue,
-        ),
-        body: Center(
-          child: Text('GoogleFonts'),
-        ),
-        floatingActionButton: FloatingActionButton(onPressed: () { },
-        ),
-      )*/
+      home: PrimaPagina(),
+      /*routes: { // routs per reindirizzamenti statici con argomenti costanti/senza argomenti
+        '/prima': (context) => PrimaPagina(),
+        '/seconda': (context) => SecondaPagina(data: "seconda")
+      },*/
+      onGenerateRoute: RouteGenerator.generateRoute, //onGenerateRoute per reindirizzamenti con argomenti variabili
       //#endregion
     );
   }
